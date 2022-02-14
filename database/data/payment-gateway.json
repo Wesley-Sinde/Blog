@@ -1,0 +1,61 @@
+[
+  {
+    "identity":"Stripe",
+    "logo":"stripe",
+    "link":"https://stripe.com",
+    "config":
+    {
+      "Publishable_Key":"",
+      "Secret_Key":""
+    },
+    "status":0
+  },
+
+  {
+    "identity":"Instamojo",
+    "logo":"instamojo",
+    "link":"https://www.instamojo.com",
+    "config":
+    {
+      "API_KEY":"",
+      "AUTH_TOKEN":""
+    },
+    "status":0
+  },
+
+  {
+    "identity":"PayUMoney",
+    "logo":"payumoney",
+    "link":"https://www.payumoney.com",
+    "config":
+    {
+      "Merchant_Key":"",
+      "Merchant_Salt":"",
+      "Auth_Header":""
+    },
+    "status":0
+  },
+
+  {
+    "identity":"RozorPay",
+    "logo":"rozorpay",
+    "link":"https://razorpay.com",
+    "config":
+      {
+        "Key":"",
+        "Secret":""
+      },
+    "status":0},
+
+  {"identity":"PayStack",
+    "logo":"paystack",
+    "link":"https://paystack.co",
+    "config":
+    {
+      "publicKey":"",
+      "secretKey":"",
+      "merchantEmail":""
+    },
+    "status":0
+  }
+]

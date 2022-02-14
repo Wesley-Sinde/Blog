@@ -1,0 +1,24 @@
+[
+  {
+    "identity":"Paypal",
+    "logo":"paypal",
+    "link":"https://paypal.com",
+    "config":
+    {
+      "API_USERNAME":"",
+      "API_PASSWORD":"",
+      "API_SECRET":"",
+      "CURRENCY":""
+    },
+    "status":0
+  },
+  {"identity":"Stripe","logo":"stripe","link":"https://stripe.com","config":{"Publishable_Key":"", "Secret_Key":""},"status":0},
+  {"identity":"PayUMoney","logo":"payumoney","link":"https://www.payumoney.com","config":{"Merchant_Key":"", "Merchant_Salt":"", "Auth_Header":""},"status":0},
+  {"identity":"RozorPay","logo":"rozorpay","link":"https://razorpay.com","config":{"KeyId":"", "KeySecret":""},"status":0},
+  {"identity":"PayTM","logo":"paytm","link":"https://paytm.com","config":{"Publishable_Key":"", "Secret_Key":""},"status":0},
+  {"identity":"Paypal","logo":"paypal","link":"https://paypal.com","config":{"Username":"", "Password":"", "Signature":""},"status":0},
+  {"identity":"CCAvenue","logo":"ccavenue","link":"https://www.ccavenue.com","config":{"Merchant_Id":"", "Working Key":""},"status":0},
+  {"identity":"Instamojo","logo":"instamojo","link":"https://www.instamojo.com","config":{"Instamojo_Id":"", "Secret_Key":""},"status":0},
+  {"identity":"Khalti","logo":"khalti","link":"https://khalti.com/","config":{"Public_Key":"", "Secret_Key":""},"status":0}
+]
+

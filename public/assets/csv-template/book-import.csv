@@ -1,0 +1,3 @@
+isbn_number,code,start,end,title,sub_title,category,author,price,edition,edition_year,language,publisher,publish_year,series,rack_location,total_pages,source
+1,ANPH,1,1,anatomy & physiology,anatomy & physiology,BOOK,Ross & wilson,1399,1st,2019,English,delhi elsevier,2014,1st,101,500,BUY
+2,HUPHY,2,2,Human physiology,Human physiology,BOOK,c.c. Chatterjee,550,2nd,2019,English,c.b.s publisher,2014,2nd,102,300,GIEFT

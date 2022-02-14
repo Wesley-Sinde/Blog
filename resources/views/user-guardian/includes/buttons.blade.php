@@ -1,0 +1,14 @@
+<div class="clearfix hidden-print ">
+    <div class="easy-link-menu align-left">
+        <a class="{!! request()->is('user-guardian/students/profile')?'btn-success':'btn-primary' !!} btn-sm" href="{{ route('user-guardian.students.profile',['id'=>Crypt::encryptString($data['student_id'])]) }}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Profile</a>
+        <a class="{!! request()->is('user-guardian/students/fees')?'btn-success':'btn-primary' !!} btn-sm" href="{{ route('user-guardian.students.fees',['id'=>Crypt::encryptString($data['student_id'])]) }}"><i class="fa fa-calculator" aria-hidden="true"></i>&nbsp;Fee Detail</a>
+        <a class="{!! request()->is('user-guardian/students/library')?'btn-success':'btn-primary' !!} btn-sm" href="{{ route('user-guardian.students.library',['id'=>Crypt::encryptString($data['student_id'])]) }}"><i class="fa fa-book" aria-hidden="true"></i>&nbsp;Library</a>
+        <a class="{!! request()->is('user-guardian/students/attendance')?'btn-success':'btn-primary' !!} btn-sm" href="{{ route('user-guardian.students.attendance',['id'=>Crypt::encryptString($data['student_id'])]) }}"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Attendance</a>
+        <a class="{!! request()->is('user-guardian/students/exams')?'btn-success':'btn-primary' !!} btn-sm" href="{{ route('user-guardian.students.exams',['id'=>Crypt::encryptString($data['student_id'])]) }}"><i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp;Exam & Score</a>
+        <a class="{!! request()->is('user-guardian/students/hostel')?'btn-success':'btn-primary' !!} btn-sm" href="{{ route('user-guardian.students.hostel',['id'=>Crypt::encryptString($data['student_id'])]) }}"><i class="fa fa-bed" aria-hidden="true"></i>&nbsp;Hostel</a>
+        <a class="{!! request()->is('user-guardian/students/transport')?'btn-success':'btn-primary' !!} btn-sm" href="{{ route('user-guardian.students.transport',['id'=>Crypt::encryptString($data['student_id'])]) }}"><i class="fa fa-car" aria-hidden="true"></i>&nbsp;Transport</a>
+        <a class="{!! request()->is('user-guardian/students/subject')?'btn-success':'btn-primary' !!} btn-sm" href="{{ route('user-guardian.students.subject',['id'=>Crypt::encryptString($data['student_id'])]) }}"><i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Course</a>
+        <a class="{!! request()->is('user-guardian/students/download')?'btn-success':'btn-primary' !!} btn-sm" href="{{ route('user-guardian.students.download',['id'=>Crypt::encryptString($data['student_id'])]) }}"><i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp;Download</a>
+        <a class="{!! request()->is('user-guardian/students/assignment')?'btn-success':'btn-primary' !!} btn-sm" href="{{ route('user-guardian.students.assignment',['id'=>Crypt::encryptString($data['student_id'])]) }}"><i class="fa fa-tasks" aria-hidden="true"></i>&nbsp;Assignment</a>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+[
+   {
+    "identity":"Zoom",
+    "logo":"zoom",
+    "link":"https://zoom.us",
+    "config":{
+      "Key":"",
+      "Secret":"",
+      "Email":""
+    },
+    "status":1
+  }
+]
