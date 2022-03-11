@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\MorePostsController;
@@ -18,10 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [PagesController::class, 'index']);
+
+
+
 Route::resource('/blog', PostsController::class);
 Route::resource('/more', MorePostsController::class);
 
-
+Route::post('ckeditor/image_upload', [PostsController::class, 'upload'])->name('upload');
 // Route::get('/blog/more', [MorePostsController::class, 'index']);
 
 Auth::routes();

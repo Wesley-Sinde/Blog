@@ -3,9 +3,10 @@
     @extends('layouts.app')
 
     @section('content')
+        <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
         <div class="w-4/5 m-auto text-left">
             <div class="py-15 b">
-                 <h1 class="text-3xl font-extrabold text-blue-900 uppercase font-serif text-center w-2/3">
+                <h1 class="text-3xl font-extrabold text-blue-900 uppercase font-serif text-center w-2/3">
                     Create Post
                 </h1>
             </div>
@@ -55,8 +56,19 @@
         </div>
 
 
-    @endsection
 
+        <script>
+            CKEDITOR.replace('description', {
+                filebrowserUploadUrl: "{{ route('upload', ['_token' => csrf_token()]) }}",
+                filebrowserUploadMethod: 'form'
+            });
+        </script>
+
+        <script>
+            CKEDITOR.replace('description');
+        </script>
+         <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    @endsection
 @else
     <div class="items-center pt-5 bg-gray-lighter">
         <label

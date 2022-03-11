@@ -3,12 +3,14 @@
     @extends('layouts.app')
 
     @section('content')
+        <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
         <div class="w-full m-auto text-left">
             <div class="py-2 b">
-                <h1 class=" align-middle text-3xl float-left font-extrabold text-blue-900 uppercase font-serif text-center w-2/3">
+                <h1
+                    class="float-left w-2/3 font-serif text-3xl font-extrabold text-center text-blue-900 uppercase align-middle ">
                     Update Post
                 </h1>
-                <img class="align-middle border-2 h-40 w-40 float-right  border-teal-700  rounded-3xl"
+                <img class="float-right w-40 h-40 align-middle border-2 border-teal-700 rounded-3xl"
                     src="https://cdn.pixabay.com/photo/2015/08/10/09/50/woman-882568__340.jpg" alt="" width=100%>
             </div>
         </div>
@@ -17,7 +19,7 @@
             <div class="w-4/5 m-auto ">
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li class="w-1/5 py-4 px-4 mb-4 bg-red-700 text-gray-50 rounded-2xl">
+                        <li class="w-1/5 px-4 py-4 mb-4 bg-red-700 text-gray-50 rounded-2xl">
                             {{ $error }}
                         </li>
                     @endforeach
@@ -26,7 +28,8 @@
         @endif
 
         <div class="w-4/5 pt-5 m-auto">
-            <form action="/blog/{{ $post->slug }}" method="POST" enctype="multipart/form-data">
+            {{-- <form action="/blog/{{ $post->slug }}" method="POST" enctype="multipart/ --}}
+            <form action="{{ url('/blog/' . $post->slug) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -49,17 +52,39 @@
                 </div> --}}
 
                 <div class=" pb-7">
-                    <button type="submit"
+                    {{-- <button type="submit"
                         class="float-right px-8 py-4 mt-8 text-lg font-extrabold text-gray-100 uppercase bg-blue-500 rounded-3xl hover:bg-blue-900 hover:text-xl">
                         Submit Edit
-                    </button>
+                    </button> --}}
+                <button type="submit"
+                    class="relative flex justify-center float-right w-40 px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <!-- Heroicon name: solid/lock-closed
+                            <a href="https://icons8.com/icon/0Yk1P118IBq0/upload-to-cloud">Upload to Cloud icon by Icons8</a>
+                            -->
+                        <img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAABV0lEQVQ4jWNgoBAw4pOctfdhLsP/v/pM/5nWp7gqbCXagDk7Hgv9Yfl9TEpKVJGLl4Pt/dtPX9++/Xwiw1nBBa8BDf//M0nuehD76+/fYm09BV0WFma43Mf3X348e/auI91ZvhGrATPPPOP6++7HBSlpEQVOTjZWTi52DJfdufn0zT/G/+/+/ft7JM1BIRnFgBl7HixRVpWKYmdnxRsuDAwMDC+fv/vy8f3niBQnha2Mc449MPzzjWEJHy+nhIy8mBAhzQwMDAz//v9nuHrp/mMWTuYAxhl7HlzV1JHXImgtGvj/n4Hh+rUHN5nYOViFSdXMwMDAwMjIwMDBwSbA9Pv3n89k6GdgYGBg+PXzz2cWJiaGlts3nrQKifCJMbMwsRKj8e+ff7/fvPn4ipGBoZmRgYGBYf7++xw///13/feXgZ8YA5gZmd4/l/q6u0Fb+xe5rh9OAABdZXvGfAXl0QAAAABJRU5ErkJggg==" />
+                    </span>
+                   Submit Edit
+                </button>
+                
                 </div>
             </form>
         </div>
 
 
-    @endsection
+        <script>
+            CKEDITOR.replace('description', {
+                filebrowserUploadUrl: "{{ route('upload', ['_token' => csrf_token()]) }}",
+                filebrowserUploadMethod: 'form'
+            });
+        </script>
 
+        <script>
+            CKEDITOR.replace('description');
+        </script>
+        <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    @endsection
 @else
     <div class="items-center pt-5 bg-gray-lighter">
         <label

@@ -10,22 +10,30 @@ use  Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
 {
-public function __construct()
-{
-    $this->middleware('auth', ['except'=>['index','show']]);
-}
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // $post=Post::all();
         // dd($post);
-        return view('blog.index')
-            ->with('posts', Post::orderBy('id', 'Desc') -> skip(0)->take(5)->get());
+        // return view('blog.index')
+        //     ->with('posts', Post::orderBy('id', 'Desc') -> skip(0)->take(5)->get());
+
+        $posts = Post::paginate(5);
+
+        if ($request->ajax()) {
+            return view('blog.index', compact('posts'));
+        }
+
+        return view('blog.index', compact('posts'));
     }
 
 
@@ -38,6 +46,37 @@ public function __construct()
     {
         return view('blog.create');
     }
+
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            //get filename with extension
+            $filenamewithextension = $request->file('upload')->getClientOriginalName();
+
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+            //get file extension
+            $extension = $request->file('upload')->getClientOriginalExtension();
+
+            //filename to store
+            $filenametostore = $filename . '_' . time() . '.' . $extension;
+
+            //Upload File
+            $request->file('upload')->storeAs('public/uploads', $filenametostore);
+
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $url = asset('storage/uploads/' . $filenametostore);
+            $msg = 'Image successfully uploaded';
+            $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+
+            // Render HTML output 
+            @header('Content-type: text/html; charset=utf-8');
+            echo $re;
+        }
+    }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -56,15 +95,15 @@ public function __construct()
 
         //dd($newImageName);
         $request->image->move(public_path('images'), $newImageName);
-       
 
-            Post::create([
-                'title' => $request->input('title'),
-                'description' => $request->input('description'),
-                'slug' => SlugService::CreateSlug(Post::class, 'slug', $request->title),
-                'image_path' => $newImageName,
-                'user_id' => auth()->user()->id
-            ]);
+
+        Post::create([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'slug' => SlugService::CreateSlug(Post::class, 'slug', $request->title),
+            'image_path' => $newImageName,
+            'user_id' => auth()->user()->id
+        ]);
         return redirect('/blog')->with('message', 'Your Post Has Beem Added!');
     }
 
@@ -106,13 +145,13 @@ public function __construct()
             'description' => 'required',
         ]);
 
-        Post::where('slug',$slug)
-        ->update([
+        Post::where('slug', $slug)
+            ->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
                 'slug' => SlugService::CreateSlug(Post::class, 'slug', $request->title),
                 'user_id' => auth()->user()->id
-        ]);
+            ]);
         return redirect('/blog')->with('message', 'Your Post Has Been Updated!');
     }
 
@@ -124,7 +163,7 @@ public function __construct()
      */
     public function destroy($slug)
     {
-        $post=Post::where('slug', $slug);
+        $post = Post::where('slug', $slug);
         $post->delete();
 
 
